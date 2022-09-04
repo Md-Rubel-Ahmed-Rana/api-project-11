@@ -14,9 +14,10 @@ const diplayTemperature = (data) => {
 };
 
 
-document.getElementById("temp-btn").addEventListener("click", () => {
+document.getElementById("temp-btn").addEventListener("click", async() => {
     const searchField = document.getElementById("search-field");
     const city = searchField.value;
+    document.getElementById("city-name").innerText = city;
     loadTemparature(city)
 })
 
