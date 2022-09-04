@@ -11,6 +11,13 @@ const loadTemparature = async (city) => {
 const diplayTemperature = (data) => {
     const temperature = document.getElementById("temperature");
     temperature.innerText = data.main.temp;
-}
+};
+
+
+document.getElementById("temp-btn").addEventListener("click", () => {
+    const searchField = document.getElementById("search-field");
+    const city = searchField.value;
+    loadTemparature(city)
+})
 
 loadTemparature("dhaka");
