@@ -5,14 +5,19 @@ const loadTemparature = async (city) => {
     const url = await `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
-    diplayTemperature(data);
+    displayTemperature(data);
 };
 
-const diplayTemperature = (data) => {
-    const temperature = document.getElementById("temperature");
-    temperature.innerText = data.main.temp;
+const displayTemperature = (data) => {
+    setInnerTextById("temperature", data.main.temp);
+    setInnerTextById("condition", data.weather[0].main);
+
 };
 
+const setInnerTextById = (id, text) => {
+    const temperature = document.getElementById(id);
+    temperature.innerText = text;
+}
 
 document.getElementById("temp-btn").addEventListener("click", async() => {
     const searchField = document.getElementById("search-field");
@@ -21,4 +26,4 @@ document.getElementById("temp-btn").addEventListener("click", async() => {
     loadTemparature(city)
 })
 
-loadTemparature("dhaka");
+loadTemparature("Sylhet");
