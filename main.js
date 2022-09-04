@@ -5,7 +5,12 @@ const loadTemparature = async (city) => {
     const url = await `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
+    diplayTemperature(data);
 };
+
+const diplayTemperature = (data) => {
+    const temperature = document.getElementById("temperature");
+    temperature.innerText = data.main.temp;
+}
 
 loadTemparature("dhaka");
